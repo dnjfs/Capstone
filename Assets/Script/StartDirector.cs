@@ -10,5 +10,10 @@ public class StartDirector : MonoBehaviour
     {
         SceneManager.LoadScene("GameScene");
     }
-    
+
+    public void Update()
+    {
+        if(Input.GetMouseButtonDown(0))
+            SceneManager.LoadScene("GameScene"); //임시 코드
+    }
 }

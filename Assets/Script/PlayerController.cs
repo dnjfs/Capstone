@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public int a = 0;
-    public int b;
+    public int goal = 3;
     void Update()
     {
         Vector3 MousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z));
@@ -59,7 +59,8 @@ public class PlayerController : MonoBehaviour
             {
 
                 a++;
-                if (a > GetComponent<InputDoll>().doll_number)
+                //goal = GameObject.Find("GameManager").GetComponent<InputDoll>().doll_number; //목표 개수 받아옴
+                if (a >= goal)
                 {
                     SceneManager.LoadScene("ClearScene");
                     return;

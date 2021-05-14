@@ -5,33 +5,22 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
-
-
 {
-    Animator animator;
+    Animator anim;
     public int a = 0;
     public int goal = 3;
 
-    void start()
+    public bool isStart;
+    void Start()
     {
-        this.animator = GetComponent<Animator>();
-        this.animator.speed = 0;
-       
-
+        anim = this.GetComponent<Animator>();
     }
 
-    public void Update()
+    void Update()
     {
-
-        
-            
-            
-                Vector3 MousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z));
-                MousePosition.z = 0f;
-                this.transform.position = MousePosition;
-                
-            
-       
+        Vector3 MousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z));
+        MousePosition.z = 0f;
+        this.transform.position = MousePosition;
     }
 
    
@@ -65,25 +54,34 @@ public class PlayerController : MonoBehaviour
     */
 
     void OnCollisionEnter2D(Collision2D coll)
-
-
     {
         
         if (coll.gameObject.tag == "Doll")
         {
-            
+            anim.SetTrigger("Catch");
+
             coll.gameObject.transform.parent = this.transform;
-            coll.gameObject.transform.position = this.transform.position + new Vector3(0, -1f, 0);
+            coll.gameObject.transform.position = this.transform.position + new Vector3(0, 0.5f, 0);
 
             GameObject director = GameObject.Find("GameDirector");
             director.GetComponent<GameDirector>().DecreaseHp();
 
         }
-        else if (coll.gameObject.tag == "Finish")
-        {
-            if(this.transform.childCount >= 1)
-            {
 
+    }
+
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.tag == "Finish")
+        {
+            if (this.transform.childCount == 0) //크레인이 아직 자식으로 붙지 않음
+            {
+                GameObject crain = GameObject.Find("Crain");
+                crain.gameObject.transform.parent = this.transform;
+                crain.gameObject.transform.position = this.transform.position + new Vector3(0, 1.5f, 0);
+            }
+            else if (this.transform.childCount >= 2)
+            {
                 a++;
                 //goal = GameObject.Find("GameManager").GetComponent<InputDoll>().doll_number; //목표 개수 받아옴
                 if (a >= goal)
@@ -91,33 +89,16 @@ public class PlayerController : MonoBehaviour
                     SceneManager.LoadScene("ClearScene");
                     return;
                 }
-                Destroy(this.transform.GetChild(0).gameObject);
+                Destroy(this.transform.GetChild(1).gameObject);
 
-                
+
                 GameObject.Find("CatGenerator").GetComponent<CatGenerator>().Generate();
                 Timer timer = GameObject.Find("Timer").GetComponent<Timer>();
                 timer.timerOn = false;
                 timer.AddAll();
                 Debug.Log(timer.a);
                 timer.TimerReset();
-
-
-
             }
-
-            
-
-           
         }
-
     }
 }
-
-//    void OnTriggerEnter2D(Collider2D other)
-//    {
-       
-//        Debug.Log("골");
-//        SceneManager.LoadScene("ClearScene");
-//    }
-
-//}

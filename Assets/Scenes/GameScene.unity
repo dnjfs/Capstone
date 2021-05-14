@@ -242,6 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   a: 0
   goal: 3
+  distance: 0
   isStart: 0
 --- !u!58 &110852653
 CircleCollider2D:
@@ -819,6 +820,7 @@ GameObject:
   - component: {fileID: 1683772605}
   - component: {fileID: 1683772604}
   - component: {fileID: 1683772603}
+  - component: {fileID: 1683772606}
   m_Layer: 0
   m_Name: flag
   m_TagString: Finish
@@ -917,6 +919,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1683772606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683772602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebe51f3bcd2a4c14f9d45ff0f7c63a76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance1: 0
+  distance2: 0
+  isCalc: 0
 --- !u!1 &1872007857
 GameObject:
   m_ObjectHideFlags: 0

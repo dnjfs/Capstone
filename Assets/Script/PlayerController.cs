@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     Animator anim;
     public int a = 0;
     public int goal = 3;
+    public float distance;
 
     public bool isStart;
     void Start()
@@ -97,9 +98,11 @@ public class PlayerController : MonoBehaviour
                 Timer timer = GameObject.Find("Timer").GetComponent<Timer>();
                 timer.timerOn = false;
                 timer.AddAll();
-                Debug.Log(timer.a);
+                //Debug.Log(timer.a);
                 timer.TimerReset();
             }
         }
     }
+
+
 }

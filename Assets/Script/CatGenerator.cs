@@ -36,7 +36,10 @@ public class CatGenerator : MonoBehaviour
 
 
         GameObject.Find("Timer").GetComponent<Timer>().timerOn = true;
-        
+        GameObject.Find("flag").GetComponent<flag>().isCalc = false;
+
+
+
     }
 
 }

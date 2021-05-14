@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour
             if (this.transform.childCount == 0) //크레인이 아직 자식으로 붙지 않음
             {
                 GameObject crain = GameObject.Find("Crain");
+                GameObject.Find("CatGenerator").GetComponent<CatGenerator>().Generate();
                 crain.gameObject.transform.parent = this.transform;
                 crain.gameObject.transform.position = this.transform.position + new Vector3(0, 1.5f, 0);
             }

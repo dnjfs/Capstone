@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
 
-	public bool timerOn = true;
+	public bool timerOn = false;
+	
 	public float totalTime = 0f;
 
 	private int minute = 0;
@@ -17,7 +18,7 @@ public class Timer : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-
+		
 	}
 
 	// Update is called once per frame

@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -75,12 +74,10 @@ public class PlayerController : MonoBehaviour
     {
         if (coll.gameObject.tag == "Finish")
         {
-            if (this.transform.childCount == 0) //크레인이 아직 자식으로 붙지 않음
+            if (!this.transform.GetChild(0).gameObject.activeSelf) //자식 객체가 비활성화 되어 있으면
             {
-                GameObject crain = GameObject.Find("Crain");
+                this.transform.GetChild(0).gameObject.SetActive(true); //자식 객체 활성화
                 GameObject.Find("CatGenerator").GetComponent<CatGenerator>().Generate();
-                crain.gameObject.transform.parent = this.transform;
-                crain.gameObject.transform.position = this.transform.position + new Vector3(0, 1.5f, 0);
             }
             else if (this.transform.childCount >= 2)
             {

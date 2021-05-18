@@ -11,6 +11,8 @@ public class flag : MonoBehaviour
 
     void Distance()
     {
+        if (GameObject.FindWithTag("Doll") == null)
+            return;
         Vector2 p1 = GameObject.FindWithTag("Doll").transform.position;
         Vector2 p2 = this.transform.position;
         Vector2 p3 = GameObject.FindWithTag("Player").transform.position;
@@ -49,10 +51,9 @@ public class flag : MonoBehaviour
         Vector3 AB = B.transform.position - A.transform.position;
         Vector3 AC = C.transform.position - A.transform.position;
 
-        float cos = Vector3.Dot(AB, AC) / (AB.magnitude * AC.magnitude);
-        float cos_to_anlge = Mathf.Acos(cos) * Mathf.Rad2Deg;
-        Debug.LogFormat("angle between two Vectors -> cos {0}, angle {1}",
-        cos, cos_to_anlge);
+        //float cos = Vector3.Dot(AB, AC) / (AB.magnitude * AC.magnitude);
+        //float cos_to_anlge = Mathf.Acos(cos) * Mathf.Rad2Deg;
+        //Debug.LogFormat("angle between two Vectors -> cos {0}, angle {1}", cos, cos_to_anlge);
 
         float angle = Vector3.Angle(AC, AB);
         Debug.LogFormat("angle between two Vectors -> {0}", angle);

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class StartDirector : MonoBehaviour
 {
+
     public void change()
     {
         SceneManager.LoadScene("GameScene");//임시 코드
@@ -13,7 +14,7 @@ public class StartDirector : MonoBehaviour
 
     public void RightButton()
     {
-            SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("GameScene");
 
     }
 

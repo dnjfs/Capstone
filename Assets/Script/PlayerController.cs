@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float distance;
 
     public bool isStart;
+
     void Start()
     {
         anim = this.GetComponent<Animator>();
@@ -23,9 +24,6 @@ public class PlayerController : MonoBehaviour
         MousePosition.z = 0f;
         this.transform.position = MousePosition;
     }
-
-   
-
 
 
     /*
@@ -55,7 +53,7 @@ public class PlayerController : MonoBehaviour
     */
 
     void OnCollisionEnter2D(Collision2D coll)
-    {
+    { // 크레인이 집을 떄
         
         if (coll.gameObject.tag == "Doll")
         {
@@ -66,6 +64,8 @@ public class PlayerController : MonoBehaviour
 
             GameObject director = GameObject.Find("GameDirector");
             director.GetComponent<GameDirector>().DecreaseHp();
+
+            GameObject.Find("AudioController").GetComponent<AudioController>().Crane();
 
         }
 
@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
                 GameObject.Find("CatGenerator").GetComponent<CatGenerator>().Generate();
             }
             else if (this.transform.childCount >= 2)
-            {
+            { // 고양이가 사라질 때
 
                 Timer timer = GameObject.Find("Timer").GetComponent<Timer>();
                 timer.timerOn = false;
@@ -89,11 +89,15 @@ public class PlayerController : MonoBehaviour
                 Debug.Log(timer.alltime);
                 timer.TimerReset();
                 a++;
+
+                GameObject.Find("AudioController").GetComponent<AudioController>().Exit();
                 //goal = GameObject.Find("GameManager").GetComponent<InputDoll>().doll_number; //목표 개수 받아옴
                 if (a >= goal)
                 {
                 
                     SceneManager.LoadScene("ClearScene");
+                    GameObject.Find("AudioController").GetComponent<AudioController>().Result();
+
                     return;
                 }
                 Destroy(this.transform.GetChild(1).gameObject);

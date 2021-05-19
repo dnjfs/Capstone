@@ -5,21 +5,20 @@ using UnityEngine;
 public class CatGenerator : MonoBehaviour
 {
     public GameObject CatPrefab;
-    
+    public AudioSource mySound;
+    public AudioClip catSound;
 
-    void Update()
+
+
+    public void Meow()
     {
-       
-       
+        mySound.PlayOneShot(catSound);
     }
 
    public void Generate()
     {
         Invoke("example", 2f);
 
-       
-        
-        
     }
 
     void example()
@@ -32,6 +31,7 @@ public class CatGenerator : MonoBehaviour
             py = Random.Range(-3f, 5f);
         }
 
+        Meow();
         go.transform.position = new Vector3(px, py, 0);
 
 

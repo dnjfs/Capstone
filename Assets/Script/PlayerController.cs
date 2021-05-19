@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -81,10 +82,17 @@ public class PlayerController : MonoBehaviour
             }
             else if (this.transform.childCount >= 2)
             {
+
+                Timer timer = GameObject.Find("Timer").GetComponent<Timer>();
+                timer.timerOn = false;
+                timer.AddAll();
+                Debug.Log(timer.alltime);
+                timer.TimerReset();
                 a++;
                 //goal = GameObject.Find("GameManager").GetComponent<InputDoll>().doll_number; //목표 개수 받아옴
                 if (a >= goal)
                 {
+                
                     SceneManager.LoadScene("ClearScene");
                     return;
                 }
@@ -92,11 +100,7 @@ public class PlayerController : MonoBehaviour
 
 
                 GameObject.Find("CatGenerator").GetComponent<CatGenerator>().Generate();
-                Timer timer = GameObject.Find("Timer").GetComponent<Timer>();
-                timer.timerOn = false;
-                timer.AddAll();
-                //Debug.Log(timer.a);
-                timer.TimerReset();
+                
             }
         }
     }

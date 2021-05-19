@@ -13,7 +13,8 @@ public class Timer : MonoBehaviour
 	private int minute = 0;
 	private int second = 0;
 	private int tic = 0;
-	public float a = 0;
+	public float alltime = 0;
+	public float average = 0;
 
 	// Use this for initialization
 	void Start()
@@ -29,6 +30,7 @@ public class Timer : MonoBehaviour
 			totalTime += Time.deltaTime;
 		}
 		this.GetComponent<Text>().text = "시간 : " + TimerCalc();
+		
 	}
 
 	private string TimerCalc()
@@ -45,7 +47,13 @@ public class Timer : MonoBehaviour
 	public void AddAll()
 	{
 
-	  a += totalTime ;
+	  alltime += totalTime;
+		average = alltime / 5;
+
+		GameObject.Find("timestorage").GetComponent<timestorage>().firsttext = alltime.ToString();
+		GameObject.Find("timestorage").GetComponent<timestorage>().secondtext = average.ToString();
+
+
 	}
 	public void TimerReset()
     {

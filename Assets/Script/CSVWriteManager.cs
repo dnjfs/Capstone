@@ -99,13 +99,10 @@ public class CSVWriteManager : MonoBehaviour
             }
         }
 
-        int length = output.GetLength(0);
-        string delimiter = ",";
-
         StringBuilder stringBuilder = new StringBuilder();
 
-        for (int index = 0; index < length; index++)
-            stringBuilder.AppendLine(string.Join(delimiter, output[index]));
+        for (int index = 0; index < output.Length; index++)
+            stringBuilder.AppendLine(string.Join(",", output[index]));
 
         Stream fileStream = new FileStream(filePath, FileMode.CreateNew, FileAccess.Write);
         StreamWriter outStream = new StreamWriter(fileStream, Encoding.UTF8);

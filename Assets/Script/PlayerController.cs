@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     Animator anim;
     public int a = 0;
-    public int goal = 3;
+    public int goal = 5;
     public float distance;
 
     public bool isStart;

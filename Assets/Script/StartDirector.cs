@@ -8,12 +8,22 @@ public class StartDirector : MonoBehaviour
 {
     public void change()
     {
+        SceneManager.LoadScene("GameScene");//임시 코드
+    }
+
+    public void RightButton()
+    {
+            SceneManager.LoadScene("GameScene");
+
+    }
+
+    public void LeftButton()
+    {
         SceneManager.LoadScene("GameScene");
     }
 
-    public void Update()
+    public void ResultButton()
     {
-        if(Input.GetMouseButtonDown(0))
-            SceneManager.LoadScene("GameScene"); //임시 코드
+        SceneManager.LoadScene("ClearScene");
     }
 }

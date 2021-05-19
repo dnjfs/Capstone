@@ -30,7 +30,7 @@ public class CatGenerator : MonoBehaviour
 
         GameObject.Find("Timer").GetComponent<Timer>().timerOn = true;
         GameObject.Find("flag").GetComponent<flag>().isCalc = false;
-        GameObject.Find("csvRW").GetComponent<CSVManager>().InitiateObject(go.transform.position);
+        GameObject.Find("csvWriter").GetComponent<CSVWriteManager>().InitiateObject(go.transform.position);
     }
 
 }

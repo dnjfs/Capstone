@@ -10,8 +10,6 @@ public class PlayerController : MonoBehaviour
     public int goal = 5;
     public float distance;
 
-    public CSVManager csvManager;
-
     public bool isStart;
     void Start()
     {
@@ -67,7 +65,7 @@ public class PlayerController : MonoBehaviour
             GameObject director = GameObject.Find("GameDirector");
             director.GetComponent<GameDirector>().DecreaseHp();
 
-            GameObject.Find("csvRW").GetComponent<CSVManager>().TurningPoint(); //돌아오는 궤적 그리기
+            GameObject.Find("csvWriter").GetComponent<CSVWriteManager>().TurningPoint(); //돌아오는 궤적 그리기
         }
     }
 
@@ -82,12 +80,12 @@ public class PlayerController : MonoBehaviour
             }
             else if (this.transform.childCount >= 2)
             {
-                GameObject.Find("csvRW").GetComponent<CSVManager>().EndTrace(); //궤적 그리기 종료
+                GameObject.Find("csvWriter").GetComponent<CSVWriteManager>().EndTrace(); //궤적 그리기 종료
 
                 a++;
                 if (a >= goal)
                 {
-                    GameObject.Find("csvRW").GetComponent<CSVManager>().WriteData(); //게임 데이터 기록
+                    GameObject.Find("csvWriter").GetComponent<CSVWriteManager>().WriteData(); //게임 데이터 기록
 
                     SceneManager.LoadScene("ClearScene");
                     return;

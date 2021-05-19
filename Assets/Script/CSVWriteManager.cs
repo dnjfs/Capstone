@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 
-public class CSVManager : MonoBehaviour
+public class CSVWriteManager : MonoBehaviour
 {
     string m_Path = Application.streamingAssetsPath;
     List<string> m_ColumnHeadings = new List<string>();
@@ -49,6 +49,13 @@ public class CSVManager : MonoBehaviour
         StartCoroutine(DrawTrace()); //마우스 궤적 시작
     }
 
+    public void EndTrace() //기록 종료
+    {
+        StopAllCoroutines();
+        TraceToString();
+        csvData.Add(wData);
+    }
+
     void TraceToString() //마우스 궤적을 문자열로 변환
     {
         string str = "";
@@ -58,13 +65,6 @@ public class CSVManager : MonoBehaviour
         }
         wData.Add(str);
         Debug.Log(str);
-    }
-
-    public void EndTrace() //기록 종료
-    {
-        StopAllCoroutines();
-        TraceToString();
-        csvData.Add(wData);
     }
 
     IEnumerator DrawTrace() //가는 궤적

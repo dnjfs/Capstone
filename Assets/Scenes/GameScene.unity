@@ -947,7 +947,7 @@ GameObject:
   - component: {fileID: 1864025162}
   - component: {fileID: 1864025161}
   m_Layer: 0
-  m_Name: csvRW
+  m_Name: csvWriter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

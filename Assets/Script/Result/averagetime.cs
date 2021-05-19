@@ -16,8 +16,5 @@ public class averagetime: MonoBehaviour
     }
 
 
-    void Update()
-    {
-
-    }
+  
 }

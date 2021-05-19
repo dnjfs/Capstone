@@ -6,6 +6,7 @@ public class timestorage : MonoBehaviour
 {
     public string firsttext;
     public string secondtext;
+    public string thirdtext;
 
     void Awake()
     {

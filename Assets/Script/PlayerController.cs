@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public int goal = 5;
     public float distance;
 
+    public CSVManager csvManager;
+
     public bool isStart;
     void Start()
     {
@@ -55,7 +57,6 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        
         if (coll.gameObject.tag == "Doll")
         {
             anim.SetTrigger("Catch");
@@ -66,8 +67,8 @@ public class PlayerController : MonoBehaviour
             GameObject director = GameObject.Find("GameDirector");
             director.GetComponent<GameDirector>().DecreaseHp();
 
+            GameObject.Find("csvRW").GetComponent<CSVManager>().TurningPoint(); //돌아오는 궤적 그리기
         }
-
     }
 
     void OnTriggerEnter2D(Collider2D coll)
@@ -81,10 +82,13 @@ public class PlayerController : MonoBehaviour
             }
             else if (this.transform.childCount >= 2)
             {
+                GameObject.Find("csvRW").GetComponent<CSVManager>().EndTrace(); //궤적 그리기 종료
+
                 a++;
-                //goal = GameObject.Find("GameManager").GetComponent<InputDoll>().doll_number; //목표 개수 받아옴
                 if (a >= goal)
                 {
+                    GameObject.Find("csvRW").GetComponent<CSVManager>().WriteData(); //게임 데이터 기록
+
                     SceneManager.LoadScene("ClearScene");
                     return;
                 }

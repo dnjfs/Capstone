@@ -5,11 +5,18 @@ using UnityEngine.SceneManagement; // LoadScene을 사용하기 위해서 필요
 
 public class ClearDirector : MonoBehaviour
 {
-    void Update()
+     public void RePlay()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
+       
+       {
             SceneManager.LoadScene("GameScene");
         }
     }
+
+
+    public void RetunrToStart()
+    {
+        SceneManager.LoadScene("StartScene");
+    }
+
 }

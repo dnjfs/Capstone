@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   a: 0
-  goal: 2
+  goal: 5
   distance: 0
   isStart: 0
 --- !u!58 &110852653

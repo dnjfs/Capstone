@@ -18,7 +18,6 @@ public class CatGenerator : MonoBehaviour
    public void Generate()
     {
         Invoke("example", 2f);
-
     }
 
     void example()
@@ -34,12 +33,9 @@ public class CatGenerator : MonoBehaviour
         Meow();
         go.transform.position = new Vector3(px, py, 0);
 
-
         GameObject.Find("Timer").GetComponent<Timer>().timerOn = true;
         GameObject.Find("flag").GetComponent<flag>().isCalc = false;
-
-
-
+        GameObject.Find("csvWriter").GetComponent<CSVWriteManager>().InitiateObject(go.transform.position);
     }
 
 }

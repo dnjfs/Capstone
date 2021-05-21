@@ -54,7 +54,6 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D coll)
     { // 크레인이 집을 떄
-        
         if (coll.gameObject.tag == "Doll")
         {
             anim.SetTrigger("Catch");
@@ -66,9 +65,8 @@ public class PlayerController : MonoBehaviour
             director.GetComponent<GameDirector>().DecreaseHp();
 
             GameObject.Find("AudioController").GetComponent<AudioController>().Crane();
-
+            GameObject.Find("csvWriter").GetComponent<CSVWriteManager>().TurningPoint(); //돌아오는 궤적 그리기
         }
-
     }
 
     void OnTriggerEnter2D(Collider2D coll)
@@ -82,6 +80,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (this.transform.childCount >= 2)
             { // 고양이가 사라질 때
+                GameObject.Find("csvWriter").GetComponent<CSVWriteManager>().EndTrace(); //궤적 그리기 종료
 
                 Timer timer = GameObject.Find("Timer").GetComponent<Timer>();
                 timer.timerOn = false;
@@ -94,7 +93,7 @@ public class PlayerController : MonoBehaviour
                 //goal = GameObject.Find("GameManager").GetComponent<InputDoll>().doll_number; //목표 개수 받아옴
                 if (a >= goal)
                 {
-                
+                    GameObject.Find("csvWriter").GetComponent<CSVWriteManager>().WriteData(); //게임 데이터 기록
                     SceneManager.LoadScene("ClearScene");
                     GameObject.Find("AudioController").GetComponent<AudioController>().Result();
 

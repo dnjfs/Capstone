@@ -37,7 +37,7 @@ public class CSVReadManager : MonoBehaviour
 
         fileNum = GetFileNumber(m_Path);
         Debug.Log("파일 개수 "+fileNum);
-        ReadCSV(fileEntries[0]); //0번째 파일 불러오기
+        ReadCSV(fileEntries[fileNum-1]); //0번째 파일 불러오기
     }
 
     void Update()

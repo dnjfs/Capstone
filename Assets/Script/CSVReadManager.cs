@@ -177,24 +177,26 @@ public class CSVReadManager : MonoBehaviour
             return;
         }
         var childObj = GetComponentsInChildren<Transform>();
-
-        foreach (var iter in childObj)
-        {
+        foreach (var iter in childObj) //기존에 그려진 궤적 제거
             if (iter != this.transform)
                 Destroy(iter.gameObject);
-        }
-        DATA data = csvData[cnt];
 
-        foreach (var pos in data.mousePos1)
+        DATA data = csvData[cnt];
+        Vector2 stdPos = Camera.main.WorldToScreenPoint(new Vector2(0f, -4f)); //박스 위치
+        Vector2 dPos = Camera.main.ScreenToWorldPoint((new Vector2(data.dollPos.Item1, data.dollPos.Item2) - stdPos) * 0.6f + stdPos); //인형 위치
+        LineRenderer line = GetComponent<LineRenderer>();
+        line.SetVertexCount(2);
+        line.SetPosition(0, new Vector2(0f, -4f));
+        line.SetPosition(1, dPos);
+        foreach (var pos in data.mousePos1) //가는 궤적
         {
-            Vector2 cPos = Camera.main.ScreenToWorldPoint(new Vector2(pos.Item1, pos.Item2));
+            Vector2 cPos = Camera.main.ScreenToWorldPoint((new Vector2(pos.Item1, pos.Item2)-stdPos)*0.6f + stdPos); //궤적 크기 60% 정도로 줄이기
             GameObject child = Instantiate(ToDoll, cPos, Quaternion.identity);
             child.transform.parent = this.gameObject.transform;
         }
-
-        foreach (var pos in data.mousePos2)
+        foreach (var pos in data.mousePos2) //오는 궤적
         {
-            Vector2 cPos = Camera.main.ScreenToWorldPoint(new Vector2(pos.Item1, pos.Item2));
+            Vector2 cPos = Camera.main.ScreenToWorldPoint((new Vector2(pos.Item1, pos.Item2) - stdPos) * 0.6f + stdPos);
             GameObject child = Instantiate(ToFlag, cPos, Quaternion.identity);
             child.transform.parent = this.gameObject.transform;
         }

@@ -16,12 +16,6 @@ public class Timer : MonoBehaviour
 	public float alltime = 0;
 	public float average = 0;
 
-	// Use this for initialization
-	void Start()
-	{
-		
-	}
-
 	// Update is called once per frame
 	void Update()
 	{
@@ -30,7 +24,6 @@ public class Timer : MonoBehaviour
 			totalTime += Time.deltaTime;
 		}
 		this.GetComponent<Text>().text = "시간 : " + TimerCalc();
-		
 	}
 
 	private string TimerCalc()
@@ -55,4 +48,9 @@ public class Timer : MonoBehaviour
     {
 		totalTime = 0;
     }
+
+	public float GetTime()
+	{
+		return totalTime;
+	}
 }

@@ -80,6 +80,11 @@ public class PlayerController : MonoBehaviour
             }
             else if (this.transform.childCount >= 2)
             { // 고양이가 사라질 때
+                Timer timer = GameObject.Find("Timer").GetComponent<Timer>();
+                timer.timerOn = false;
+                timer.AddAll();
+                Debug.Log(timer.alltime);
+
                 GameObject.Find("csvWriter").GetComponent<CSVWriteManager>().EndTrace(); //궤적 그리기 종료
                 anim.SetTrigger("Out");
                 GetComponent<ParticleSystem>().Play();
@@ -87,10 +92,6 @@ public class PlayerController : MonoBehaviour
                 GameObject director = GameObject.Find("GameDirector");
                 director.GetComponent<GameDirector>().DecreaseHp();
 
-                Timer timer = GameObject.Find("Timer").GetComponent<Timer>();
-                timer.timerOn = false;
-                timer.AddAll();
-                Debug.Log(timer.alltime);
                 timer.TimerReset();
                 a++;
 

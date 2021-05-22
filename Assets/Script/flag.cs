@@ -34,6 +34,11 @@ public class flag : MonoBehaviour
         }
     }
 
+    public float GetMisAngle()
+    {
+        return misangle;
+    }
+
     private void AngleCounting()
     {
         isCalc = true;
@@ -58,14 +63,9 @@ public class flag : MonoBehaviour
         //Debug.LogFormat("angle between two Vectors -> cos {0}, angle {1}", cos, cos_to_anlge);
 
         float angle = Vector3.Angle(AC, AB);
-        misangle += angle;
-        misAngleAvg = misangle / 5;
-        GameObject.Find("timestorage").GetComponent<timestorage>().thirdtext = misAngleAvg.ToString();
+        misangle = angle;
+        //misAngleAvg = misangle / 5;
+        //GameObject.Find("timestorage").GetComponent<timestorage>().thirdtext = misAngleAvg.ToString();
         Debug.LogFormat("angle between two Vectors -> {0}", angle);
     }
-
-
-
-
-
 }

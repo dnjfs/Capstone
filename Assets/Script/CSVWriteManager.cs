@@ -15,6 +15,8 @@ public class CSVWriteManager : MonoBehaviour
     int count; //현재 횟수
     string m_FilePath; //파일 경로
     List<(int, int)> mPos; //마우스 궤적
+    float moveTime; //이동시간
+    float errorAngle; //오차각도
     List<string> wData; //한 행에 들어갈 데이터
     List<List<string>> csvData = new List<List<string>>(); //모든 데이터
 
@@ -24,9 +26,11 @@ public class CSVWriteManager : MonoBehaviour
         m_ColumnHeadings.Add("인형 위치");
         m_ColumnHeadings.Add("가는 궤적");
         m_ColumnHeadings.Add("오는 궤적");
+        m_ColumnHeadings.Add("이동시간");
+        m_ColumnHeadings.Add("오차각도");
         csvData.Add(m_ColumnHeadings);
 
-        m_FilePath = m_Path + @"\" + DateTime.Now.ToString("yyyyMMddHHmm") + ".csv";
+        m_FilePath = m_Path + @"\" + DateTime.Now.ToString("yyyyMMdd_HHmm") + ".csv";
     }
 
     public void InitiateObject(Vector2 vec)
@@ -53,6 +57,10 @@ public class CSVWriteManager : MonoBehaviour
     {
         StopAllCoroutines();
         TraceToString();
+        moveTime = GameObject.Find("Timer").GetComponent<Timer>().GetTime();
+        errorAngle = GameObject.Find("flag").GetComponent<flag>().GetMisAngle();
+        wData.Add(moveTime.ToString());
+        wData.Add(errorAngle.ToString());
         csvData.Add(wData);
     }
 

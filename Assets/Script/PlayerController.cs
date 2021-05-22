@@ -61,8 +61,8 @@ public class PlayerController : MonoBehaviour
             coll.gameObject.transform.parent = this.transform;
             coll.gameObject.transform.position = this.transform.position + new Vector3(0, 0.5f, 0);
 
-            GameObject director = GameObject.Find("GameDirector");
-            director.GetComponent<GameDirector>().DecreaseHp();
+            
+           
 
             GameObject.Find("AudioController").GetComponent<AudioController>().Crane();
             GameObject.Find("csvWriter").GetComponent<CSVWriteManager>().TurningPoint(); //돌아오는 궤적 그리기
@@ -83,6 +83,9 @@ public class PlayerController : MonoBehaviour
                 GameObject.Find("csvWriter").GetComponent<CSVWriteManager>().EndTrace(); //궤적 그리기 종료
                 anim.SetTrigger("Out");
                 GetComponent<ParticleSystem>().Play();
+                GameObject.Find("number").GetComponent<NumberManager>().Decrease();
+                GameObject director = GameObject.Find("GameDirector");
+                director.GetComponent<GameDirector>().DecreaseHp();
 
                 Timer timer = GameObject.Find("Timer").GetComponent<Timer>();
                 timer.timerOn = false;

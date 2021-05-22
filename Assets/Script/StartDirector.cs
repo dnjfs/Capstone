@@ -11,16 +11,14 @@ public class StartDirector : MonoBehaviour
     {
         SceneManager.LoadScene("GameScene");//임시 코드
     }
-
-    public void RightButton()
-    {
-        SceneManager.LoadScene("GameScene");
-
+    public void OnClickButton() {
+        Invoke("MoveScene", 1);
     }
 
-    public void LeftButton()
+    public void MoveScene()
     {
         SceneManager.LoadScene("GameScene");
+
     }
 
     public void ResultButton()

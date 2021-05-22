@@ -5232,7 +5232,6 @@ GameObject:
   - component: {fileID: 578901727}
   - component: {fileID: 578901726}
   - component: {fileID: 578901729}
-  - component: {fileID: 578901728}
   m_Layer: 0
   m_Name: AudioController
   m_TagString: Untagged
@@ -5350,18 +5349,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &578901728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 578901725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13545f5cf239ec847b4a0e689c823427, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &578901729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5377,7 +5364,6 @@ MonoBehaviour:
   mySound: {fileID: 578901726}
   craneSound: {fileID: 8300000, guid: 13dd9a99a0ee00247bfe062521d22141, type: 3}
   exitSound: {fileID: 8300000, guid: d0cb614819b190a489d206c5771fb499, type: 3}
-  resultSound: {fileID: 8300000, guid: 07b32d031c8fc6f4fa4862df64c9dd65, type: 3}
 --- !u!1 &771678893
 GameObject:
   m_ObjectHideFlags: 0

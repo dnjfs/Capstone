@@ -225,8 +225,8 @@ public class CSVReadManager : MonoBehaviour
     private void ChangePrintN()
     {
         TDollNum.text = (printN+1).ToString()+"번째 인형";
-        TMoveTime.text = "시간: "+TimerToString(csvData[printN].moveTime);
-        TErrorAngle.text = ((int)((csvData[printN].errorAngle)*10)/10f).ToString()+"도";
+        TMoveTime.text = "시간: " + TimerToString(csvData[printN].moveTime);
+        TErrorAngle.text = "오차: " + ((int)((csvData[printN].errorAngle) * 10) / 10f).ToString() + "도";
         DrawTrace(printN);
     }
 

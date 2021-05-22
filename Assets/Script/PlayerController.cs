@@ -82,6 +82,7 @@ public class PlayerController : MonoBehaviour
             { // 고양이가 사라질 때
                 GameObject.Find("csvWriter").GetComponent<CSVWriteManager>().EndTrace(); //궤적 그리기 종료
                 anim.SetTrigger("Out");
+                GetComponent<ParticleSystem>().Play();
 
                 Timer timer = GameObject.Find("Timer").GetComponent<Timer>();
                 timer.timerOn = false;

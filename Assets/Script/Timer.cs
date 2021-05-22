@@ -50,10 +50,6 @@ public class Timer : MonoBehaviour
 	  alltime += totalTime;
 		average = alltime / 5;
 
-		GameObject.Find("timestorage").GetComponent<timestorage>().firsttext = alltime.ToString();
-		GameObject.Find("timestorage").GetComponent<timestorage>().secondtext = average.ToString();
-
-
 	}
 	public void TimerReset()
     {

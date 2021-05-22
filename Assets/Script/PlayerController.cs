@@ -100,7 +100,6 @@ public class PlayerController : MonoBehaviour
                 {
                     GameObject.Find("csvWriter").GetComponent<CSVWriteManager>().WriteData(); //게임 데이터 기록
                     SceneManager.LoadScene("ClearScene");
-                    GameObject.Find("AudioController").GetComponent<AudioController>().Result();
 
                     return;
                 }

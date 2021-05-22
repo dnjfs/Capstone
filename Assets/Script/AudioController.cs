@@ -7,7 +7,6 @@ public class AudioController : MonoBehaviour
     public AudioSource mySound;
     public AudioClip craneSound;
     public AudioClip exitSound;
-    public AudioClip resultSound;
 
     public void Crane() {
         mySound.PlayOneShot(craneSound);
@@ -17,11 +16,6 @@ public class AudioController : MonoBehaviour
         mySound.PlayOneShot(exitSound);
     
     }
-
-    public void Result() {
-        mySound.PlayOneShot(resultSound);
-    }
-
 
     // Start is called before the first frame update
     void Start()

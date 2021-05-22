@@ -60,7 +60,6 @@ public class flag : MonoBehaviour
         float angle = Vector3.Angle(AC, AB);
         misangle += angle;
         misAngleAvg = misangle / 5;
-        GameObject.Find("timestorage").GetComponent<timestorage>().thirdtext = misAngleAvg.ToString();
         Debug.LogFormat("angle between two Vectors -> {0}", angle);
     }
 
